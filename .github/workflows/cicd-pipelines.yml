@@ -1,0 +1,32 @@
+name: CICD Database Dev to Prod
+description: CICD pipeline for database dev to prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-database:
+    name: Deploy Database to Production
+    runs-on: ubuntu-latest
+
+    # env:
+    #   DB_HOST: ${{ secrets.DB_PROD_HOST }}
+    #   DB_PORT: ${{ secrets.DB_PROD_PORT }}
+    #   DB_NAME: ${{ secrets.DB_PROD_NAME }}
+    #   DB_USER: ${{ secrets.DB_PROD_USER }}
+    #   DB_PASS: ${{ secrets.DB_PROD_PASS }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Execute remote SSH commands using password
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          scripts: |
+            echo "Berhasil connect ke server"
