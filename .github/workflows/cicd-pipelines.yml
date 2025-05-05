@@ -32,4 +32,4 @@ jobs:
             echo "Berhasil connect ke server"
             cd /home/gideon_cicd/cicd_database_excercise
             echo "Berhasil masuk ke direktori"
-            
+            ls
