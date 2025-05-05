@@ -33,6 +33,6 @@ jobs:
 
             cd /home/gideon_cicd/cicd_database_excercise
             echo "Berhasil masuk ke direktori"
-
-            docker compose up -d
+            
+            sudo docker compose up -d
             echo "Berhasil menjalankan Docker Compose"
