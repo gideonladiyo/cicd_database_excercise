@@ -30,6 +30,9 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             echo "Berhasil connect ke server"
+
             cd /home/gideon_cicd/cicd_database_excercise
             echo "Berhasil masuk ke direktori"
-            ls
+
+            docker compose up -d
+            echo "Berhasil menjalankan Docker Compose"
