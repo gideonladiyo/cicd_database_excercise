@@ -23,7 +23,7 @@ jobs:
           port: 22
           script: |
           
-            if [-d "/home/mkepl"]; then
+            if [ -d "/home/mkepl" ]; then
               echo "Folder sudah ada"
             else
               mkdir /home/mkepl
