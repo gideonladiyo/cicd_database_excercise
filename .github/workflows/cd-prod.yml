@@ -22,13 +22,12 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            whoami
-            id
+            sudo mkepl_user
           
             if [ -d "/home/mkepl" ]; then
               echo "Folder sudah ada"
             else
-              sudo mkdir /home/mkepl
+              mkdir /home/mkepl
             fi
 
             cd /home/mkepl
@@ -36,11 +35,11 @@ jobs:
             if [ -d ".git" ]; then
               echo "📁 Repo exists, pulling latest changes..."
               # Update remote dengan token agar pull tidak butuh login
-              sudo git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
-              sudo git pull origin main
+              git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
+              git pull origin main
             else
               echo "📥 Cloning repo for the first time..."
-              sudo git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
+              git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
             fi
 
             echo "✅ Deployment finished at $(date)"
