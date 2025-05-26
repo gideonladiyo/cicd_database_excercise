@@ -35,8 +35,8 @@ jobs:
 
             echo "Berhasil Update Repository"
             echo "Mencoba untuk Menginstall Maven"
-            sudo apt-get update -y
-            sudo apt-get install -y maven
+            apt-get update -y
+            apt-get install -y maven
             echo "Berhasil Install Maven"
 
             cd /home/cicd_database_excercise
