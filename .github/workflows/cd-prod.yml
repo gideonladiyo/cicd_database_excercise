@@ -22,8 +22,6 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            sudo mkepl_user
-          
             if [ -d "/home/mkepl" ]; then
               echo "Folder sudah ada"
             else
