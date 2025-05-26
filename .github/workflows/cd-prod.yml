@@ -26,21 +26,19 @@ jobs:
             if [ -d "/home/mkepl" ]; then
               echo "Folder sudah ada"
             else
-              mkdir /home/mkepl
+              sudo mkdir /home/mkepl
             fi
 
             cd /home/mkepl
 
             if [ -d ".git" ]; then
               echo "📁 Repo exists, pulling latest changes..."
-
               # Update remote dengan token agar pull tidak butuh login
-              git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
-
-              git pull origin main
+              sudo git remote set-url origin https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git
+              sudo git pull origin main
             else
               echo "📥 Cloning repo for the first time..."
-              git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
+              sudo git clone https://${{ secrets.GIT_USERNAME }}:${{ secrets.GIT_PAT }}@github.com/${{ secrets.GIT_USERNAME }}/cicd_database_example.git .
             fi
 
             echo "✅ Deployment finished at $(date)"
