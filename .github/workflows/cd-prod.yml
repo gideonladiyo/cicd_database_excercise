@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to /home/yis
+    name: Deploy to prod
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,14 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            cd /home/yis
+          
+            if [-d "/home/mkepl"]; then
+              echo "Folder sudah ada"
+            else
+              mkdir /home/mkepl
+            fi
+
+            cd /home/mkepl
 
             if [ -d ".git" ]; then
               echo "📁 Repo exists, pulling latest changes..."
